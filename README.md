@@ -1,78 +1,252 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+<div class="description">
+                                    <p>In this lesson, I will show you how to use&nbsp;Eloquent&nbsp;Relationships in laravel applications. I will show you how to build one-to-one, one-to-many, many-to-many, polymorphic relations across the laravel eloquent model class.</p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+<p>&nbsp;</p>
 
-## About Laravel
+<h2><strong>One to One:</strong></h2>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<pre class=" language-php"><code class=" language-php"><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">hasOne</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'App\Model'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">hasOne</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'App\Model'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'foreign_key'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'local_key'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<p><strong>One To One (Inverse):</strong>&nbsp;</p>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<pre class=" language-php"><code class=" language-php"><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">belongsTo</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'App\Model'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">belongsTo</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'App\Model'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'foreign_key'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'other_key'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 
-## Learning Laravel
+<p>&nbsp;</p>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<h2><strong>&nbsp;One to Many:</strong></h2>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<pre class=" language-php"><code class=" language-php"><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">hasMany</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'App\Model'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">hasMany</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'App\Model'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'foreign_key'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'local_key'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 
-## Laravel Sponsors
+<p><strong>One To Many (Inverse)</strong>&nbsp;</p>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+<pre class=" language-php"><code class=" language-php"><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">belongsTo</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'App\Model'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">belongsTo</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'App\Model'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'foreign_key'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'other_key'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+<p>&nbsp;</p>
 
-## Contributing
+<h2><strong>Many to Many:</strong></h2>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<pre class=" language-php"><code class=" language-php"><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">belongsToMany</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'App\Model'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'pivot_table'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'foreign_id'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'foreign_id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 
-## Code of Conduct
+<p><strong>Example:</strong></p>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<pre class=" language-php"><code class=" language-php"><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">belongsToMany</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'App\Role'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'role_user'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'user_id'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'role_id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 
-## Security Vulnerabilities
+<p>&nbsp;</p>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<p><strong>Attaching / Detaching:</strong></p>
 
-## License
+<p><strong>Attaching:</strong></p>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">roles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">attach</span><span class="token punctuation">(</span><span class="token variable">$roleId</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">roles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">attach</span><span class="token punctuation">(</span><span class="token variable">$roleId</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token single-quoted-string string">'expires'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$expires</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">roles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">attach</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token number">1</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token single-quoted-string string">'expires'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$expires</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token number">2</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token single-quoted-string string">'expires'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$expires</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+<p><strong>Detaching:</strong></p>
+
+<pre class=" language-php"><code class=" language-php"><span class="token comment">// Detach a single role from the user...</span>
+<span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">roles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">detach</span><span class="token punctuation">(</span><span class="token variable">$roleId</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Detach all roles from the user...</span>
+<span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">roles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">detach</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">roles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">detach</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+<p>&nbsp;</p>
+
+<p><strong>Syncing Associations:</strong></p>
+
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">roles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+<p>&nbsp;</p>
+
+<h2><strong>Has One Through:</strong></h2>
+
+<pre class=" language-php"><code class=" language-php"><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">hasOneThrough</span><span class="token punctuation">(</span>
+            <span class="token single-quoted-string string">'App\Owner'</span><span class="token punctuation">,</span>
+            <span class="token single-quoted-string string">'App\Car'</span><span class="token punctuation">,</span>
+            <span class="token single-quoted-string string">'mechanic_id'</span><span class="token punctuation">,</span> <span class="token comment">// Foreign key on cars table...</span>
+            <span class="token single-quoted-string string">'car_id'</span><span class="token punctuation">,</span> <span class="token comment">// Foreign key on owners table...</span>
+            <span class="token single-quoted-string string">'id'</span><span class="token punctuation">,</span> <span class="token comment">// Local key on mechanics table...</span>
+            <span class="token single-quoted-string string">'id'</span> <span class="token comment">// Local key on cars table...</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+<pre><code>mechanics
+    id - integer
+    name - string
+
+cars
+    id - integer
+    model - string
+    mechanic_id - integer
+
+owners
+    id - integer
+    name - string
+    car_id - integer</code></pre>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h2><strong>Has Many Through:</strong></h2>
+
+<pre class=" language-php"><code class=" language-php"><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">hasManyThrough</span><span class="token punctuation">(</span>
+    <span class="token single-quoted-string string">'App\Post'</span><span class="token punctuation">,</span>
+    <span class="token single-quoted-string string">'App\User'</span><span class="token punctuation">,</span>
+    <span class="token single-quoted-string string">'country_id'</span><span class="token punctuation">,</span> <span class="token comment">// Foreign key on users table...</span>
+    <span class="token single-quoted-string string">'user_id'</span><span class="token punctuation">,</span> <span class="token comment">// Foreign key on posts table...</span>
+    <span class="token single-quoted-string string">'id'</span><span class="token punctuation">,</span> <span class="token comment">// Local key on countries table...</span>
+    <span class="token single-quoted-string string">'id'</span> <span class="token comment">// Local key on users table...</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+<pre class=" language-php"><code class=" language-php">countries
+    id <span class="token operator">-</span> integer
+    name <span class="token operator">-</span> string
+
+users
+    id <span class="token operator">-</span> integer
+    country_id <span class="token operator">-</span> integer
+    name <span class="token operator">-</span> string
+
+posts
+    id <span class="token operator">-</span> integer
+    user_id <span class="token operator">-</span> integer
+    title <span class="token operator">-</span> string</code></pre>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h2><strong>Polymorphic Relationships</strong></h2>
+
+<p><strong>One To One (Polymorphic):</strong></p>
+
+<pre><code>posts
+    id - integer
+    name - string
+
+users
+    id - integer
+    name - string
+
+images
+    id - integer
+    url - string
+    imageable_id - integer
+    imageable_type - string</code></pre>
+
+<p>&nbsp;</p>
+
+<p><strong>Models:</strong></p>
+
+<pre class=" language-php"><code class=" language-php"><span class="token keyword">namespace</span> <span class="token package">App</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Database<span class="token punctuation">\</span>Eloquent<span class="token punctuation">\</span>Model</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Image</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span>
+<span class="token punctuation">{</span>
+    <span class="token doc-comment comment">/**
+     * Get the owning imageable model.
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">imageable</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">morphTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Post</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span>
+<span class="token punctuation">{</span>
+    <span class="token doc-comment comment">/**
+     * Get the post's image.
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">image</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">morphOne</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'App\Image'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'imageable'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span>
+<span class="token punctuation">{</span>
+    <span class="token doc-comment comment">/**
+     * Get the user's image.
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">image</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">morphOne</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'App\Image'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'imageable'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+
+<p>&nbsp;</p>
+
+<p><strong>One To Many (Polymorphic):</strong></p>
+
+<pre><code>posts
+    id - integer
+    title - string
+    body - text
+
+videos
+    id - integer
+    title - string
+    url - string
+
+comments
+    id - integer
+    body - text
+    commentable_id - integer
+    commentable_type - string</code></pre>
+
+<p><strong>Models:</strong></p>
+
+<pre class=" language-php"><code class=" language-php"><span class="token keyword">namespace</span> <span class="token package">App</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Database<span class="token punctuation">\</span>Eloquent<span class="token punctuation">\</span>Model</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Comment</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span>
+<span class="token punctuation">{</span>
+    <span class="token doc-comment comment">/**
+     * Get the owning commentable model.
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">commentable</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">morphTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Post</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span>
+<span class="token punctuation">{</span>
+    <span class="token doc-comment comment">/**
+     * Get all of the post's comments.
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">comments</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">morphMany</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'App\Comment'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'commentable'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Video</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span>
+<span class="token punctuation">{</span>
+    <span class="token doc-comment comment">/**
+     * Get all of the video's comments.
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">comments</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">morphMany</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'App\Comment'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'commentable'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+
+<p>&nbsp;</p>
+                                </div>
